@@ -1,0 +1,79 @@
+{
+  "selected_model": "xgboost",
+  "selection_data": "training-only out-of-fold predictions",
+  "capacity_rate": 0.2,
+  "decision_threshold": 0.38,
+  "selection_rationale": "Selected threshold 0.38 from training-only out-of-fold predictions: highest F1 among thresholds with flagged rate <= configured 20.0% outreach capacity; ties prefer higher precision, then a higher threshold.",
+  "oof_selected_threshold_metrics": {
+    "threshold": 0.38,
+    "precision": 0.4515203671830178,
+    "recall": 0.28228120516499283,
+    "f1": 0.3473846832928713,
+    "specificity": 0.8596594245449207,
+    "false_positive_rate": 0.14034057545507928,
+    "false_negative_rate": 0.7177187948350072,
+    "flagged_rate": 0.1815625,
+    "confusion_matrix": [
+      [
+        5856,
+        956
+      ],
+      [
+        2001,
+        787
+      ]
+    ]
+  },
+  "held_out_test_metrics": {
+    "threshold": 0.38,
+    "precision": 0.49217002237136465,
+    "recall": 0.31563845050215206,
+    "f1": 0.38461538461538464,
+    "specificity": 0.8667058132706987,
+    "false_positive_rate": 0.13329418672930124,
+    "false_negative_rate": 0.6843615494978479,
+    "flagged_rate": 0.18625,
+    "confusion_matrix": [
+      [
+        1476,
+        227
+      ],
+      [
+        477,
+        220
+      ]
+    ],
+    "brier_score": 0.1948653906583786,
+    "ranking_metrics": [
+      {
+        "capacity_rate": 0.1,
+        "k_customers": 240,
+        "precision_at_k": 0.475,
+        "recall_at_k": 0.16355810616929697,
+        "lift_at_k": 1.6355810616929698,
+        "note": "Top-K ranking at stated capacity; not a treatment effect."
+      },
+      {
+        "capacity_rate": 0.2,
+        "k_customers": 480,
+        "precision_at_k": 0.49166666666666664,
+        "recall_at_k": 0.3385939741750359,
+        "lift_at_k": 1.6929698708751793,
+        "note": "Top-K ranking at stated capacity; not a treatment effect."
+      },
+      {
+        "capacity_rate": 0.3,
+        "k_customers": 720,
+        "precision_at_k": 0.4361111111111111,
+        "recall_at_k": 0.45050215208034433,
+        "lift_at_k": 1.5016738402678145,
+        "note": "Top-K ranking at stated capacity; not a treatment effect."
+      }
+    ]
+  },
+  "probability_calibration": {
+    "brier_score_test": 0.1948653906583786,
+    "calibrated": false,
+    "note": "Brier score reported as a calibration diagnostic; no calibration transform was fitted."
+  }
+}

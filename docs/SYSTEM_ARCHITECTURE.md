@@ -1,0 +1,5 @@
+# System architecture (current)
+
+The local prototype has supplied CSVs and model reports in `data/` and `ml/`; a saved scikit-learn/XGBoost model pipeline; SQLAlchemy persistence (SQLite locally, PostgreSQL supported); FastAPI; and Streamlit, which accesses tenant data over authenticated HTTP. LangGraph coordinates the five analysis agents and stores checkpoints in SQLite. Optional LLM use is centralized behind a server-side gateway.
+
+The ML pipeline uses 34 dictionary input columns and excludes `customer_id` and `churn`. Training-only cross-validation selects the candidate; out-of-fold training probabilities select an operational threshold, and the supplied held-out split evaluates it once. Authentication, tenant membership, dataset ingestion, predictions, analysis runs, simulated events, recommendations, approval, simulated execution, feedback, reports, and audit records are persisted. Causal effect estimation and external execution integrations remain out of scope because the supplied evidence does not support them.

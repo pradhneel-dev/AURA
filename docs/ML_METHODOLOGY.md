@@ -1,0 +1,9 @@
+# ML methodology
+
+All 34 dictionary-defined input features are used. The identifier and churn label are excluded from preprocessing. Numerical inputs are median-imputed and standardized; categorical inputs are most-frequent-imputed and one-hot encoded with unknown categories ignored. All transforms fit inside sklearn pipelines on the 9,600 training rows only.
+
+Logistic Regression, Random Forest, and XGBoost are trained. Hyperparameter selection uses 3-fold stratified cross-validation on the training split, scored by ROC-AUC. The supplied 2,400-row test split is used once for final evaluation. The saved model is selected by the highest cross-validation ROC-AUC (not test performance). Candidate comparison reports retain the fixed 0.50 threshold. Separately, an operational threshold is selected from out-of-fold training predictions by maximizing F1 subject to the explicit outreach capacity (`AURA_CONTACT_CAPACITY_RATE`, default 20%). Ties prefer precision then a higher threshold. The selected threshold is evaluated once on the held-out test split and stored in model metadata. `AURA_PREDICTION_THRESHOLD` provides a server-side override.
+
+The selected threshold balances precision and recall within the stated capacity rather than maximizing recall alone. Held-out results include specificity, false-positive and false-negative rates, a confusion matrix, and precision@K, recall@K and lift@K at 10%, 20% and 30% contact capacity. The held-out Brier score is reported as a calibration diagnostic; no calibration transform was fitted. Top-K measures describe model ranking and do not imply treatment effects.
+
+Metrics and reports are in `ml/reports/`. Feature importance is model-specific (absolute logistic coefficients or tree impurity importance) and describes association, not causation. SHAP is not included. The data is synthetic, and no real-world performance claim is implied.

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "customer_id": "CUST_06297",
+  "probability": 0.3187010884284973,
+  "risk_level": "MEDIUM",
+  "model_version": "churn-v1",
+  "model_reloaded_from_saved_artifact": true,
+  "invalid_input_checks": {
+    "missing_feature": "rejected",
+    "extra_feature": "rejected"
+  }
+}

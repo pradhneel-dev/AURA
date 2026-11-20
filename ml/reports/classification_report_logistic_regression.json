@@ -1,0 +1,50 @@
+{
+  "metrics": {
+    "model": "logistic_regression",
+    "accuracy": 0.58625,
+    "precision": 0.3647166361974406,
+    "recall": 0.5724533715925395,
+    "f1": 0.4455611390284757,
+    "roc_auc": 0.6205986397537977,
+    "pr_auc": 0.4053307036647493,
+    "threshold": 0.5,
+    "validation_roc_auc": 0.6171388914292567
+  },
+  "classification_report": {
+    "0": {
+      "precision": 0.7718223583460949,
+      "recall": 0.5918966529653552,
+      "f1-score": 0.6699900299102692,
+      "support": 1703.0
+    },
+    "1": {
+      "precision": 0.3647166361974406,
+      "recall": 0.5724533715925395,
+      "f1-score": 0.4455611390284757,
+      "support": 697.0
+    },
+    "accuracy": 0.58625,
+    "macro avg": {
+      "precision": 0.5682694972717678,
+      "recall": 0.5821750122789473,
+      "f1-score": 0.5577755844693725,
+      "support": 2400.0
+    },
+    "weighted avg": {
+      "precision": 0.6535920715387565,
+      "recall": 0.58625,
+      "f1-score": 0.6048121395166817,
+      "support": 2400.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1008,
+      695
+    ],
+    [
+      298,
+      399
+    ]
+  ]
+}

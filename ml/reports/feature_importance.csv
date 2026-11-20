@@ -1,0 +1,21 @@
+feature,importance
+cat__complaint_severity_High,0.07895747
+cat__contract_type_Two year,0.043869175
+num__complaint_count_30d,0.029906819
+num__unresolved_tickets,0.027973628
+num__nps_score,0.025575558
+num__last_activity_days,0.024661051
+num__satisfaction_score,0.023836149
+num__support_tickets_30d,0.022240525
+num__login_frequency_30d,0.021997308
+cat__auto_payment_No,0.021814723
+cat__feedback_sentiment_Positive,0.021406002
+num__usage_change_30d,0.021324174
+cat__payment_method_Wallet,0.01918508
+num__monthly_charges,0.01898903
+num__active_days_30d,0.018908564
+cat__payment_method_UPI,0.018850872
+cat__subscription_plan_Premium,0.018647257
+num__billing_disputes,0.018563446
+cat__customer_segment_Basic,0.018315695
+cat__subscription_plan_Basic,0.017296087

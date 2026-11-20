@@ -1,0 +1,37 @@
+parameter,type,role
+customer_id,object,Identifier
+age,int64,Input feature
+gender,object,Input feature
+location,object,Input feature
+customer_segment,object,Input feature
+tenure_months,int64,Input feature
+contract_type,object,Input feature
+subscription_plan,object,Input feature
+monthly_charges,float64,Input feature
+total_charges,float64,Input feature
+payment_method,object,Input feature
+auto_payment,object,Input feature
+days_to_renewal,int64,Input feature
+login_frequency_30d,int64,Input feature
+avg_session_duration,float64,Input feature
+feature_usage_rate,float64,Input feature
+usage_change_30d,float64,Input feature
+last_activity_days,int64,Input feature
+active_days_30d,int64,Input feature
+transactions_30d,int64,Input feature
+support_tickets_30d,int64,Input feature
+unresolved_tickets,int64,Input feature
+avg_resolution_time,float64,Input feature
+complaint_count_30d,int64,Input feature
+service_downtime_hours,float64,Input feature
+api_error_rate,float64,Input feature
+payment_failures_90d,int64,Input feature
+days_payment_overdue,int64,Input feature
+billing_disputes,int64,Input feature
+refund_requests,int64,Input feature
+renewal_friction,float64,Input feature
+satisfaction_score,float64,Input feature
+nps_score,int64,Input feature
+feedback_sentiment,object,Input feature
+complaint_severity,object,Input feature
+churn,int64,Target

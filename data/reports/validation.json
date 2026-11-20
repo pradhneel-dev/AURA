@@ -1,0 +1,26 @@
+{
+  "schema_columns": 36,
+  "input_features": 34,
+  "files": {
+    "full": {
+      "rows": 12000,
+      "churn": 3485,
+      "non_churn": 8515
+    },
+    "train": {
+      "rows": 9600,
+      "churn": 2788,
+      "non_churn": 6812
+    },
+    "test": {
+      "rows": 2400,
+      "churn": 697,
+      "non_churn": 1703
+    }
+  },
+  "train_test_id_overlap": 0,
+  "full_reconciles_with_splits": true,
+  "schema_types_valid": true,
+  "numeric_ranges_valid": true,
+  "categories_within_full_dataset": true
+}

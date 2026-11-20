@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: aura
+      POSTGRES_USER: aura
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - aura_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aura -d aura"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: .
+    command: ["sh", "-c", "alembic upgrade head && uvicorn backend.main:app --host 0.0.0.0 --port 8000"]
+    environment:
+      AURA_DATABASE_URL: postgresql+psycopg://aura:${POSTGRES_PASSWORD}@db:5432/aura
+      AURA_SECRET_KEY: ${AURA_SECRET_KEY:?Set AURA_SECRET_KEY in .env}
+      AURA_GRAPH_CHECKPOINT_PATH: /app/data/aura_graph_checkpoints.sqlite
+      AURA_MODEL_PATH: ml/artifacts/best_model.pkl
+      AURA_LLM_PROVIDER: ${AURA_LLM_PROVIDER:-}
+      AURA_LLM_API_KEY: ${AURA_LLM_API_KEY:-}
+      AURA_LLM_MODEL: ${AURA_LLM_MODEL:-}
+      AURA_LLM_BASE_URL: ${AURA_LLM_BASE_URL:-}
+    volumes:
+      - aura_runtime:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  frontend:
+    build: .
+    command: ["streamlit", "run", "frontend/app.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    environment:
+      AURA_API_URL: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8501:8501"
+
+volumes:
+  aura_pgdata:
+  aura_runtime:
